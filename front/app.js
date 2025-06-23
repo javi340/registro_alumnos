@@ -6,7 +6,6 @@ const headers = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${API_KEY}`
 };
-//jjjj
 // Funciones de servicio que retornan Promesas
 async function registerStudentService(name, career) {
     const response = await fetch(API_URL, {
