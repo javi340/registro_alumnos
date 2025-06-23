@@ -1,0 +1,258 @@
+body {
+  width: 100%;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #810b0b;
+  color: #73cc4f;
+  line-height: 1.6;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2rem;                /* Mucho más grande para destacarlo */
+  margin: 5;
+  text-transform: uppercase;      /* Todo en mayúsculas */
+  font-weight: 900;               /* Extra negrita */
+  text-align: center; 
+  margin: 0;
+    font-size: 28px;
+    color: #101297;
+    text-shadow: 1px 1px 2px #0000da;  
+  
+}
+
+/* Estilo para el enlace dentro del título */
+.title a {
+  text-decoration: none;          /* Quita el subrayado del enlace */
+  color: #311212;                 /* Azul oscuro elegante */
+  transition: color 0.3s;         /* Transición suave al pasar el mouse */
+}
+
+
+.fullscreen-image {
+  width: 95vw;       /* 100% del ancho de la ventana */
+  height: 60vh;      /* 100% del alto de la ventana */
+ 
+}
+
+/* Estilo para el enlace dentro ...
+
+
+/* General resets y fuente */
+.body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #8fc5f1;
+}
+
+/* Navbar contenedor */
+.navbar {
+    background: linear-gradient(90deg, #d0d8e0, #2b62fc);
+    padding: 20px 40px;
+    box-shadow: 0 4px 8px rgb(12, 12, 14);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*de aca para abajo esta bien lo otro controlar...
+
+/* footer */
+
+.text-muted {
+  color: #110f0f !important;     /* Un gris más oscuro que el típico 'muted' */
+  font-weight: bold !important; /* Negrita */
+  font-size: 0.95rem;         /* Opcional: ligeramente más grande si lo deseas */
+}
+
+/*estilo para usar a la pagina principal de inicio*/
+
+
+h1 a {
+  color: #333; /* Negro suave */
+  text-decoration: none; /* Opcional: quita subrayado */
+  font-weight: bold;
+  transition: color 0.3s ease; /* Animación suave al cambiar color */
+}
+
+h1 a:hover {
+  color: #000; /* Negro más oscuro al pasar el mouse */
+}
+
+
+/* para los botones registrar (quedan como los imput tamaño)*/
+
+.btn-form {
+  width: 100%;               /* Mismo ancho que el input */
+  padding: 10px 15px;        /* Espaciado similar */
+  background-color: #007bff; /* Color serio, azul grisáceo */
+  color: rgb(17, 16, 16);              /* Texto blanco */
+  border: none;
+  border-radius: 4px;        /* Bordes redondeados como form-control */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-form:hover {
+  background-color: #0056b3; /* Oscurecer al pasar el mouse */
+}
+
+
+/* para los botones borrar */
+
+.btn-borrar {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #dc3545;  /* Rojo Bootstrap */
+  color: rgb(19, 18, 18);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.btn-borrar:hover {
+  background-color: #a71d2a;  /* Rojo más oscuro */
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3); /* Sombra */
+}
+
+
+/*para los botones buscar */
+
+.btn-ver {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #28a745;  /* Verde Bootstrap */
+  color: rgb(15, 14, 14);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.btn-ver:hover {
+  background-color: #1e7e34;  /* Verde más oscuro */
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.3); /* Sombra */
+}
+
+
+/*estilo para menu desplegable */
+
+
+/* Estilo para el botón del menú */
+.nav-link.dropdown-toggle {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: #0056b3;  /* Azul profesional */
+}
+
+.nav-link.dropdown-toggle:hover {
+  color: #003d80;
+}
+
+/* Estilo para el dropdown completo */
+.dropdown-menu {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para los ítems */
+.dropdown-item {
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #333;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover de los ítems */
+.dropdown-item:hover {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+
+/* contacto inicio */
+
+.fullscreen-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contact widget styles */
+#contact-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: Arial, sans-serif;
+  z-index: 9999;
+  text-align: center;
+}
+
+#contact-icon {
+  background-color: #0d6efd;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  transition: background-color 0.3s ease;
+}
+
+#contact-icon:hover {
+  background-color: #0b5ed7;
+}
+
+#contact-info {
+  display: none;
+  background: white;
+  color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  width: 220px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  text-align: left;
+}
+
+#contact-widget:hover #contact-info {
+  display: block;
+}
+
+
+.fullscreen-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: contain;   /* 👈 esto cambia: "contain" en vez de "cover" */
+  object-position: center;
+  display: block;
+  background-color: #fff; /* o el color que prefieras de fondo */
+}

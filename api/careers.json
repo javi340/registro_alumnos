@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Ingeniería en Sistemas"
+  },
+  {
+    "id": 2,
+    "name": "Medicina"
+  },
+  {
+    "id": 3,
+    "name": "Arquitectura"
+  },
+  {
+    "id": 4,
+    "name": "Psicología"
+  },
+  {
+    "id": 5,
+    "name": "Derecho"
+  }
+]
