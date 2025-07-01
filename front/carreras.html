@@ -57,25 +57,38 @@
   <!-- CONTENIDO -->
 
   <h1 class="title a">Carrera</h1>
-
-<section id="content" class="card">
-  <h2>Registro de Carrera</h2>
-
+<section id="careerSection" class="card mt-4">
+  <h2>Registrar Carrera</h2>
   <div class="mb-3">
-    <select id="careerName" class="form-control mb-2">
-      <option value="">-- Seleccioná una carrera --</option>
-      <option value="Ingeniería en Sistemas">Ingeniería en Sistemas</option>
-      <option value="Medicina">Medicina</option>
-      <option value="Arquitectura">Arquitectura</option>
-      <option value="Psicología">Psicología</option>
-      <option value="Derecho">Derecho</option>
+    <!-- Input con sugerencias -->
+    <input
+      type="text"
+      class="form-control mb-2"
+      id="careerName"
+      list="careerSuggestions"
+      placeholder="Nombre de la carrera"
+    />
+
+    <!-- Sugerencias predefinidas -->
+    <datalist id="careerSuggestions">
+      <option value="Ingeniería de Sistemas" />
+      <option value="Administración de Empresas" />
+      <option value="Medicina" />
+      <option value="Derecho" />
+      <option value="Psicología" />
+    </datalist>
+
+    <!-- Select para categorías -->
+    <select class="form-control mb-2" id="categorySelect">
+      <option value="">Selecciona una categoría</option>
     </select>
 
-    <button class="btn-form" onclick="registerCarrer()">Registrar carrera</button>
+    <button class="btn-form" onclick="registerCareer()">Registrar Carrera</button>
   </div>
-
-  <pre id="careerResult" class="bg-light p-3 border rounded"></pre>
+  <pre id="careerRegisterResult" class="bg-light p-3 border rounded"></pre>
 </section>
+
+
 
   <!-- Get Carrers by ID -->
   <section class="card">

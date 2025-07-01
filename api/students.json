@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "juan",
+    "career": "Ingeniería en Sistemas"
+  },
+  {
+    "id": 2,
+    "name": "federico",
+    "career": "Arquitectura"
+  },
+  {
+    "id": 3,
+    "name": "juan manuel",
+    "career": "Medicina"
+  }
+]

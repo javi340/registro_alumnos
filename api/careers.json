@@ -18,5 +18,65 @@
   {
     "id": 5,
     "name": "Derecho"
+  },
+  {
+    "id": 6,
+    "name": "Ingeniería en Sistemas"
+  },
+  {
+    "id": 7,
+    "name": "Arquitectura"
+  },
+  {
+    "id": 8,
+    "name": "Arquitectura"
+  },
+  {
+    "id": 9,
+    "name": "Ingeniería en Sistemas"
+  },
+  {
+    "id": 10,
+    "name": "Medicina"
+  },
+  {
+    "id": 11,
+    "name": "Administración de Empresas",
+    "category": "Tecnicatura"
+  },
+  {
+    "id": 12,
+    "name": "Administración de Empresas",
+    "category": "Licenciatura"
+  },
+  {
+    "id": 13,
+    "name": "Administración de Empresas",
+    "category": "Tecnicatura"
+  },
+  {
+    "id": 14,
+    "name": "Psicología",
+    "category": "Tecnicatura"
+  },
+  {
+    "id": 15,
+    "name": "Derecho",
+    "category": "Licenciatura"
+  },
+  {
+    "id": 16,
+    "name": "Derecho",
+    "category": "posgrado"
+  },
+  {
+    "id": 17,
+    "name": "Ingeniería de Sistemas",
+    "category": "posgrado"
+  },
+  {
+    "id": 18,
+    "name": "Medicina",
+    "category": "posgrado"
   }
 ]

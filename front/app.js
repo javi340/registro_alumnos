@@ -38,13 +38,13 @@ async function getStudentAllService() {
 async function getStudentAll() {
   try {
     const students = await getStudentAllService();
-    console.log("Students fetched:", students); // Para verificar que vienen
+    
 
     const tableBody = document.getElementById("studentTableBody");
     const title = document.getElementById("studentTitle");
 
     if (!tableBody || !title) {
-      console.log("Table body or title element not found.");
+      
       return;
     }
 
@@ -110,29 +110,25 @@ async function registerStudent() {
   const resultContainer = document.getElementById("registerResult");
 
   if (!name || !career) {
-
     Swal.fire({
-      icon: "success",
-      title: "¡Registro exitoso!",
-      text: "El estudiante fue registrado correctamente.",
+      icon: "warning",
+      title: "Campos incompletos",
+      text: "Por favor completa todos los campos antes de registrar.",
       confirmButtonText: "Aceptar"
     });
-
     return;
   }
 
   try {
     const result = await registerStudentService({ name, career });
 
-    // Mostrar la respuesta de forma permanente
     resultContainer.innerHTML = `
-            <strong>Registration Successful!</strong><br><br>
-            <strong>ID:</strong> ${result.student.id}<br>
-            <strong>Name:</strong> ${result.student.name}<br>
-            <strong>Career:</strong> ${result.student.career}
-        `;
+      <strong>¡Estudiante registrado con éxito!</strong><br><br>
+      <strong>ID:</strong> ${result.student.id}<br>
+      <strong>Nombre:</strong> ${result.student.name}<br>
+      <strong>Carrera:</strong> ${result.student.career}
+    `;
 
-    // Limpia los inputs
     document.getElementById("registerName").value = "";
     document.getElementById("registerCareer").value = "";
 
@@ -142,12 +138,23 @@ async function registerStudent() {
       text: "El estudiante fue registrado correctamente.",
       confirmButtonText: "Aceptar"
     });
-
+    // 👉 🔁 Actualizar tabla después de registrar
+    await getStudentAll();
+    
   } catch (error) {
     console.error("Error registering student:", error);
-    resultContainer.textContent = "Failed to register student.";
+
+    Swal.fire({
+      icon: "error",
+      title: "Error al registrar",
+      text: "Ocurrió un problema al registrar al estudiante.",
+      confirmButtonText: "Intentar de nuevo"
+    });
+
+    resultContainer.textContent = "No se pudo registrar al estudiante.";
   }
 }
+
 
 //obtiene un estudiante por su id y lo muestra en el HTML
 
@@ -398,63 +405,58 @@ async function getCarrerAllService() {
     method: "GET",
     headers,
   });
-  return response.json();
+
+  if (!response.ok) {
+    // Agrega esto para capturar errores de red como 404 o 500
+    throw new Error(`Error cargando carreras: ${response.status} ${response.statusText}`);
+  }
+
+  return await response.json();
 }
 
 //Función encargada de registrar una nueva carrera desde el formulario de la interfaz.
 
-async function registerCarrer() {
+async function registerCareer() {
   const name = document.getElementById("careerName").value.trim();
-  const resultContainer = document.getElementById("careerResult");
+  const category = document.getElementById("categorySelect").value.trim();
+  const resultContainer = document.getElementById("careerRegisterResult");
 
-  if (!name) {
+  if (!name || !category) {
     Swal.fire({
       icon: "warning",
-      title: "Campo vacío",
-      text: "Por favor, seleccioná o ingresá una carrera.",
-      confirmButtonText: "Aceptar",
-      allowOutsideClick: false
+      title: "Faltan campos",
+      text: "Por favor completa el nombre de la carrera y su categoría.",
     });
     return;
   }
 
   try {
-    const result = await registerCarrerServicio({ name });
-
-    // Mostrar resultado debajo
-    resultContainer.innerHTML = `
-      <strong>¡Carrera registrada exitosamente!</strong><br><br>
-      <strong>Carrera:</strong> ${result.name}
-    `;
-
-    // Limpiar input
-    document.getElementById("careerName").value = "";
-
-    // Mostrar alerta SweetAlert
-    Swal.fire({
-      icon: "success",
-      title: "¡Registro exitoso!",
-      text: "La carrera fue registrada correctamente.",
-      confirmButtonText: "Aceptar",
-      allowOutsideClick: false
+    const response = await fetch(`${API_URL}/careers`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ name, category }),
     });
 
-    // Refrescar tabla si existe
-    if (typeof getCarrerAll === "function") {
-      getCarrerAll();
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Error al registrar carrera");
     }
 
-  } catch (error) {
-    console.error("Error registering careers:", error);
+    resultContainer.textContent = `✅ ${result.message}`;
+    document.getElementById("careerName").value = "";
+    document.getElementById("categorySelect").value = "";
+
+    await cargarCarreras(); // actualiza lista si aplica
 
     Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "Hubo un problema al registrar la carrera.",
-      confirmButtonText: "Aceptar"
+      icon: "success",
+      title: "Carrera registrada",
+      text: "La carrera fue registrada correctamente.",
     });
-
-    resultContainer.textContent = "Error al registrar la carrera.";
+  } catch (error) {
+    console.error("Error al registrar carrera:", error);
+    resultContainer.textContent = "❌ No se pudo registrar la carrera.";
   }
 }
 
@@ -502,7 +504,6 @@ async function getCarrerById() {
 }
 
 
-
 //Obtiene todas las carreras desde el servidor y actualiza la tabla en la interfaz.
 
 async function getCarrerAll() {
@@ -513,7 +514,7 @@ async function getCarrerAll() {
     const title = document.getElementById("careerTitle");
 
     if (!tableBody || !title) {
-      console.log("Table body or title element not found.");
+    
       return;
     }
 
@@ -592,12 +593,12 @@ async function deletCarrer() {
 async function getCategoryAll() {
   try {
     const categories = await getCategoryAllService();
-    console.log("Categories fetched:", categories); // Para verificar que vienen
+    
     const tableBody = document.getElementById("categoriesTableBody");
     const title = document.getElementById("categoryTitle");
 
     if (!tableBody || !title) {
-      console.log("Table body or title element not found.");
+     
       return;
     }
 
@@ -804,7 +805,12 @@ async function getCategoryAllService() {
     method: "GET",
     headers,
   });
-  return response.json();
+
+  if (!response.ok) {
+    throw new Error("Error al obtener categorías");
+  }
+
+  return await response.json();
 }
 
 
@@ -820,52 +826,78 @@ document.addEventListener("DOMContentLoaded", async () => {
   await getCarrerAll();
   await getCategoryAll();
   await getStudentAll();
+  await cargarCarreras();
+  await cargarCategorias();
 });
 
 
 
-// funcion para cargar las carreras en el datalist en el formulario de registro de estudiantes.
+// probar
 
 
-async function loadCareerDatalist() {
+
+
+
+async function cargarCarreras() {
   try {
-    const carreras = await getCarrerAllService(); // función que ya tienes
-    const datalist = document.getElementById("careerList");
-    datalist.innerHTML = ""; // limpia opciones anteriores
+    const carreras = await getCarrerAllService(); // 👈 usa esta función
+
+    const select = document.getElementById("registerCareer");
+    select.innerHTML = '<option value="">Selecciona una carrera</option>';
 
     carreras.forEach(carrera => {
       const option = document.createElement("option");
       option.value = carrera.name;
-      datalist.appendChild(option);
+      option.textContent = carrera.name;
+      select.appendChild(option);
     });
   } catch (error) {
-    console.error("Error loading career options:", error);
+    
   }
 }
 
 
-// Función para cargar las categorías en el datalist en carreras.
+
+async function cargarCategorias() {
+  try {
+    const categorias = await getCategoryAllService();
+
+    const select = document.getElementById("categorySelect");
+    if (!select) {
+     
+      return;
+    }
+
+    select.innerHTML = '<option value="">Selecciona una categoría</option>';
+
+    categorias.forEach(categoria => {
+      const option = document.createElement("option");
+      option.value = categoria.name;
+      option.textContent = categoria.name;
+      select.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Error al cargar las categorías:", error);
+  }
+}
 
 
 
 
-// Cuando el documento se ha cargado completamente, se ejecutan las funciones
-// que llenan los <datalist> con las opciones disponibles de carreras y categorías.
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadCareerDatalist();
-
-});
 
 
 
 
-// se ejecutan cuando el DOM esta completo
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  getStudentAll(); // ahora sí se ejecuta cuando el DOM está completo
-  getCarrerAll(); // ahora sí se ejecuta cuando el DOM está completo
-  getCategoryAll(); // ahora sí se ejecuta cuando el DOM está completo
 
-});
+
+
+
+
+
+
+
+
+
+

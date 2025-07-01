@@ -174,9 +174,9 @@ app.delete("/api/students/:id", (req, res) => {
 
 // Registrar nueva carrera
 app.post("/api/careers", (req, res) => {
-  const { name } = req.body;
+  const { name , category} = req.body;
 
-  if (!name) {
+  if (!name || !category) {
     return res.status(400).json({ error: "Missing required field: name." });
   }
 
@@ -189,6 +189,7 @@ app.post("/api/careers", (req, res) => {
   const newCareer = {
     id: newCareersId,
     name,
+    category,
   };
 
   careers.push(newCareer);
