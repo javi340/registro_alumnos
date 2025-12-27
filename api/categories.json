@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Licenciatura"
+  },
+  {
+    "id": 2,
+    "name": "Tecnicatura"
+  },
+  {
+    "id": 3,
+    "name": "Licenciatura"
+  },
+  {
+    "id": 4,
+    "name": "Tecnicatura"
+  },
+  {
+    "id": 5,
+    "name": "Licenciatura"
+  },
+  {
+    "id": 6,
+    "name": "Tecnicatura"
+  },
+  {
+    "id": 7,
+    "name": "posgrado"
+  }
+]

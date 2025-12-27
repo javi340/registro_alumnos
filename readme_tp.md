@@ -1,0 +1,1 @@
+Modelo que utilize fue chatgpt.com ,no probe ningun otro modelo me parecio bastante bueno este siempre y cuando vos te des alguna idea y ir buscando soluciones porque sino empezabas a romper por todos lados y llega un momento que te bloqueas de tantos errores me paso,despues nada que decir me sirvio de bastante ayuda.
